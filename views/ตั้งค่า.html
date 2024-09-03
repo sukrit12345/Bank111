@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="จำนวนเเจ้งเตือน.css">
+<script src="จำนวนเเจ้งเตือน.js"></script>
+<title>ตารางสัญญารายบุคคล</title>
+
+<style>
+.navbar {
+        overflow: hidden;
+        background-color: #333;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        left: 0;
+        right: 0;
+    }
+.navbar a {
+        float: left;
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+    }
+.navbar a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+.navbar a.active {
+        background-color: #555;
+        color: white;
+    }
+
+body {
+        font-family: Arial, sans-serif;
+        background-color: #ffffff;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh; /* ทำให้หน้าจอเต็มสูง */
+    }
+
+.container {
+    display: flex;
+    flex-direction: row; /* เปลี่ยนเป็นแนวนอน */
+    gap: 20px;
+    flex-wrap: wrap; /* อนุญาตให้ wrap เมื่อพื้นที่ไม่พอ */
+    justify-content: center; /* จัดตำแหน่งให้อยู่กลาง */
+    align-items: center; /* จัดให้อยู่ตรงกลางตามแนวตั้ง */
+    width: 100%;
+    max-width: 1200px; /* ขนาดสูงสุดของ container */
+    margin: auto; /* จัดให้อยู่กลางหน้าจอ */
+}
+
+.section {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 200px; /* ความกว้างของแต่ละ div */
+    height: 200px; /* ความสูงของแต่ละ div */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: transform 0.3s ease;
+    cursor: pointer; /* แสดงว่าเป็นคลิกได้ */
+}
+
+.section:hover {
+    transform: scale(1.02);
+}
+
+
+.section i {
+    font-size: 80px; /* ขนาดของไอคอน */
+    color: #ffffff; /* สีของไอคอน */
+    margin-bottom: 10px; /* เว้นระยะห่างระหว่างไอคอนและข้อความ */
+}
+
+.section h2 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 1.2rem;
+}
+
+/* การปรับปรุงสีพื้นหลังให้เข้มขึ้น */
+.contracts2 {
+    background-color: #4CAF50; /* สีพื้นหลังเข้มขึ้นสำหรับรายการสัญญา */
+}
+
+.payment-methods {
+    background-color: #4CAF50; /* สีพื้นหลังเข้มขึ้นสำหรับช่องทางคืนเงิน */
+}
+
+.profile {
+    background-color: #4CAF50; /* สีพื้นหลังเข้มขึ้นสำหรับโปรไฟล์ */
+}
+
+</style>
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="ข้อมูลลูกหนี้.html">ข้อมูลลูกหนี้</a>
+        <a href="รายงานผล.html">รายงานผล</a>
+        <a href="เช็คเครดิต.html">เช็คเครดิต</a>
+        <a href="คลังทรัพย์สิน.html">คลังทรัพย์สิน</a>
+        <a href="ไอคราว.html">ไอคราว</a>
+        <a href="เเอดมิน.html">เเอดมิน</a>
+        <a href="คนทวง.html">คนทวง</a>
+        <a href="กองทุน.html">กองทุน</a>
+        <a href="ประวัติการทำรายการ.html">ประวัติการทำรายการ</a>
+        <a href="เเจ้งเตือน.html">เเจ้งเตือน</a>
+        <a class="active" href="ตั้งค่า.html">ตั้งค่า</a>
+    </div>
+
+    <div class="container">
+        <div class="section contracts2" onclick="window.location.href='ค่าเช่า.html';">
+            <i class="fas fa-file-invoice-dollar"></i><!-- ใช้ Font Awesome ไอคอนหนังสือ -->
+            <h2>ค่าเช่า</h2>
+        </div>
+
+        <div class="section payment-methods" onclick="window.location.href='ติดต่อเจ้าหน้าที่.html';">
+            <i class="fas fa-user-tie"></i> <!-- ใช้ Font Awesome ไอคอนบัตรเครดิต -->
+            <h2>ติดต่อเจ้าหน้าที่</h2>
+        </div>
+
+        <div class="section profile" onclick="window.location.href='โปรไฟล์เจ้าหนี้.html';">
+            <i class="fas fa-bank"></i><!-- ใช้ Font Awesome ไอคอนผู้ใช้ -->
+            <h2>โปรไฟล์</h2>
+        </div>
+    </div>
+</body>
+
+<script src="ตั้งค่า.js"></script>
+</html>

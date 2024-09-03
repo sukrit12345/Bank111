@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+<link rel="stylesheet" href="จำนวนเเจ้งเตือน.css">
+<script src="จำนวนเเจ้งเตือน.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<title>ตารางลูกหนี้ผ่อนทรัพย์</title>
+
+<style>
+/* Navbar */
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    left: 0;
+    right: 0;
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.navbar a.active {
+    background-color: #555;
+    color: white;
+}
+
+/* Body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    margin-top: 100px; /* ให้เนื้อหาเริ่มต้นหลัง navbar */
+}
+
+/* Container */
+.container {
+    width: 60%;
+    margin: auto;
+    margin-top: 50px;
+}
+
+/* Table */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: auto;
+    margin-top: 80px;
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+th {
+    background-color: #333;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+/* Search Container3 */
+.search-container3 {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-left: -2px;
+}
+
+.search-container3 input[type=text] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    width: 170px;
+}
+
+.search-container3 button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 182px;
+}
+
+.search-container3 button:hover {
+    background-color: #45a049;
+}
+
+
+/* Search Container */
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.search-container input[type=text] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+}
+
+.search-container button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.search-container button:hover {
+    background-color: #45a049;
+}
+
+
+
+/* Search Container 2 */
+.search-container2 {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* จัดให้อยู่ตรงกลางตามแนวตั้ง */
+    margin-bottom: 2px;
+}
+
+
+
+.search-container2 button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 152px;
+    
+}
+
+.search-container2 button:hover {
+    background-color: #45a049;
+}
+
+
+.search-container2 {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* จัดให้อยู่ตรงกลางตามแนวตั้ง */
+    margin-bottom: 2px;
+}
+
+
+
+.search-container2 button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 152px;
+    
+}
+
+.search-container2 button:hover {
+    background-color: #45a049;
+}
+
+.search-container2 select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    margin-left: 5px;
+    width: 192px; /* เพิ่มระยะห่างของปุ่มค้นหา กับ dropdown */
+    margin-left: -2px;
+    
+}
+
+/* Button Container */
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Custom Button */
+.custom-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 13px 25px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.custom-button:hover {
+    background-color: #45a049;
+}
+
+.button-link {
+    text-decoration: none;
+    color: white;
+}
+
+/* Column Layout */
+.column {
+    float: left;
+    width: 33.33%;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+/* Status Display */
+#totalDebtorsInContract,
+#totalIDCard,
+#debtorsWithInterest,
+#debtorsWithContracts,
+#debtorsWhoExceededContracts,
+#fullyPaidDebtors,
+#debtorsBlacklist,
+#totalPrincipalAmount,
+#totalInterestAmount,
+#totalRefundAmount,
+#totalPrincipal,
+#totalAccumulatedInterest,
+#totalNetProfit {
+    font-size: 16px;
+    color: #000000;
+    margin-top: 5px;
+}
+
+/* Clear Floats */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+/* Date Range Picker */
+.daterangepicker {
+    transform: translateX(-5%);
+    font-size: 18px; /* Adjust font size */
+}
+
+.daterangepicker .calendar-table {
+    font-size: 18px; /* Adjust font size for calendar table */
+}
+
+.daterangepicker .ranges li {
+    font-size: 18px; /* Adjust font size for ranges */
+}
+
+.daterangepicker .drp-calendar {
+    width: 350px; /* Adjust width of the calendar */
+}
+
+.daterangepicker .drp-calendar.left,
+.daterangepicker .drp-calendar.right {
+    width: 350px; /* Adjust width of both left and right calendars */
+}
+
+.daterangepicker .drp-calendar .calendar-table table {
+    width: 100%; /* Make table width 100% */
+}
+
+.daterangepicker .drp-calendar .calendar-table table tbody tr td,
+.daterangepicker .drp-calendar .calendar-table table thead tr th {
+    width: 14.28%; /* Adjust cell width for full calendar view */
+}
+
+.daterangepicker .drp-calendar.single .drp-calendar-table {
+    max-width: 600px; /* Adjust max-width for single calendar */
+}
+
+.daterangepicker .drp-calendar .drp-calendar-table {
+    max-width: 600px; /* Adjust max-width for calendar table */
+}
+
+.daterangepicker .drp-calendar {
+    max-width: 600px; /* Adjust max-width for calendar */
+}
+
+/* Chart Container */
+.chart-container {
+    max-width: 220px;
+    margin: 0 auto;
+}
+
+
+
+               
+</style>
+
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="ข้อมูลลูกหนี้.html">ข้อมูลลูกหนี้เงินกู้</a>
+        <a class="active" href="ข้อมูลลูกหนี้ผ่อนทรัพย์.html">ข้อมูลลูกหนี้ผ่อนทรัพย์</a>
+        <a href="รายงานผล.html">รายงานผล</a>
+        <a href="เช็คเครดิต.html">เช็คเครดิต</a>
+        <a href="คลังทรัพย์สิน.html">คลังทรัพย์สิน</a>
+        <a href="ไอคราว.html">ไอคราว</a>
+        <a href="เเอดมิน.html">เเอดมิน</a>
+        <a href="คนทวง.html">คนทวง</a>
+        <a href="กองทุน.html">กองทุน</a>
+        <a href="ประวัติการทำรายการ.html">ประวัติการทำรายการ</a>
+        <a class="active2" href="เเจ้งเตือน.html">เเจ้งเตือน</a>
+        <a href="ตั้งค่า.html">ตั้งค่า</a>
+    </div>
+
+
+<h2 style="text-align:center;">ตารางลูกหนี้ผ่อนทรัพย์</h2>
+
+
+
+
+
+
+<div class="row">
+    <div class="column">
+        <div class="search-container">
+            <input type="text" id="newSearchInput1" placeholder="พิมพ์ชื่อเเอดมิน">
+            <button type="button" onclick="customSearch1()">
+            <i class="fas fa-search"></i> ค้นหาเเอดมิน
+            </button>
+        </div>  
+    </div>
+
+
+    <div class="column">
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="พิมพ์เลขบัตรประชาชน">
+            <button type="button" onclick="searchTable()">
+                <i class="fas fa-search"></i> ค้นหาเลขบัตรประชาชน
+            </button>
+        </div>  
+    </div>
+
+    <div class="column">
+        <div class="search-container2">
+            <select id="statusFilter" onchange="searchIdCard2()">
+              <option value="" selected>ทั้งหมด</option>
+              <option value="อยู่ในสัญญา">อยู่ในสัญญา</option>
+              <option value="เลยสัญญา">เลยสัญญา</option>
+              <option value="ครบสัญญา">ครบสัญญา</option>
+              <option value="ชำระครบ">ชำระครบ</option>
+              <option value="ยึดทรัพย์">ยึดทรัพย์</option>
+              <option value="เเบล็คลิช">เเบล็คลิช</option>
+            </select>
+            <button type="button" onclick="searchIdCard2()">
+              <i class="fas fa-search"></i> ค้นหาสถานะ
+            </button>
+          </div>
+            
+    </div>
+
+</div>
+  
+
+
+<div class="row">
+    <div class="column">
+        <div class="search-container">
+            <input type="text" id="newSearchInput3" placeholder="พิมพ์ชื่อจังหวัด">
+            <button type="button" onclick="customSearch3()">
+            <i class="fas fa-search"></i> ค้นหาจังหวัด
+            </button>
+        </div>
+    </div>
+
+
+    <div class="column">
+        <div class="search-container3">
+            <input type="text" id="" placeholder="พิมพ์ชื่อลูกหนี้หรือนามสกุล">
+            <button type="button" onclick="customSearch1()">
+            <i class="fas fa-search"></i> ค้นหาชื่อหรือนามสกุล
+            </button>
+        </div>          
+    </div>
+
+    <div class="column">
+        <div class="search-container">
+            <input type="text" id="dateRange" placeholder="เลือกช่วงเวลาที่ต้องคืน">
+            <button onclick="customSearch2()">
+            <i class="fas fa-calendar-alt"></i> ค้นหาวันที่ต้องคืน
+            </button>
+        </div>   
+    </div>
+
+</div>
+  
+
+
+
+
+
+
+
+
+  
+<div class="row">
+    <div class="column">
+        <div style="text-align: center;">ยอดเงินรวมตามสถานะ</div>
+        <div class="chart-container">
+            <canvas id="myPieChart"></canvas>
+        </div>
+    </div>
+  <div class="column">
+    <div id="totalid_card" style="text-align: center;"></div>
+    <div id="totalDebtorsInContract" style="text-align: center;"></div>
+    <div id="debtorsWithContracts" style="text-align: center;"></div>
+    <div id="debtorsWhoExceededContracts" style="text-align: center;"></div>
+    <div id="fullyPaidDebtors" style="text-align: center;"></div>
+    <div id="debtorsBlacklist" style="text-align: center;"></div>
+  </div>
+  <div class="column">
+    <div style="text-align: center;">ยอดเงินรวมสะสม</div>
+    <div id="totalAccumulatedPrincipal" style="text-align: center;"></div>
+    <div id="totalAccumulatedInterest" style="text-align: center;"></div>
+    <div id="totalNetProfit" style="text-align: center;"></div>
+  </div>
+</div>
+
+
+
+
+<div class="button-container">
+    <button class="custom-button" onclick="window.location.href='เพิ่มข้อมูลลูกหนี้ผ่อนทรัพย์.html';">
+        <a href="เพิ่มข้อมูลลูกหนี้ผ่อนทรัพย์.html" class="button-link"><i class="fas fa-plus"></i> เพิ่มข้อมูลลูกหนี้</a>
+    </button>
+</div>
+
+
+
+
+
+
+
+
+<table id="your_table_id">
+  <thead>
+    <tr>
+        <th>ลำดับ</th>
+        <th>วันที่บันทึก</th>
+        <th>เลขบัตรประชาชน</th>
+        <th>ชื่อ</th>
+        <th>นามสกุล</th>
+        <th>วันที่ต้องจ่าย</th>
+        <th>ประภททรัพย์</th>
+        <th>ชื่อทรัพย์</th>
+        <th>เงินดาวน์</th>
+        <th>ราคาทรัพย์หักดาวน์</th>
+        <th>ดอกเบี้ย</th>
+        <th>เงินที่ต้องจ่าย</th>
+        <th>สถานะ</th>
+        <th>จังหวัด</th>
+        <th>เเอดมินดูเเล</th>
+        <th>จัดการ</th>
+        <th>สัญญา</th>
+    </tr>
+ </thead>
+ <tbody id="debtor-table-body"></tbody>
+</table>
+
+<script src="ข้อมูลลูกหนี้ผ่อนทรัพย์.js"></script>
+
+
+
+</body>
+</html>
+
+
+

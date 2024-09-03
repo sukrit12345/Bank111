@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="จำนวนเเจ้งเตือน.css">
+<script src="จำนวนเเจ้งเตือน.js"></script>
+<title>เเจ้งเตือน</title>
+
+<style>
+.navbar {
+        overflow: hidden;
+        background-color: #333;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        left: 0;
+        right: 0;
+    }
+
+.navbar a {
+        float: left;
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+    }
+.navbar a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+.navbar a.active {
+        background-color: #555;
+        color: white;
+    }
+    
+
+body {
+        font-family: Arial, sans-serif;
+        background-color: #ffffff;
+        margin-top: 100px;
+    }
+
+.container {
+  width: 60%;
+  margin: auto;
+  margin-top: 50px;
+}
+
+table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: auto;
+        margin-top: 80px;
+    }
+
+th, td {
+        border: 1px solid #dddddd;
+        text-align: center;
+        padding: 8px;
+    }
+
+th {
+        background-color: #333;
+        color: white;
+    }
+
+tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }    
+
+
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.search-container input[type=text] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+
+.search-container button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-container button:hover {
+  background-color: #45a049;
+}
+
+
+
+.search-container2 {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* จัดให้อยู่ตรงกลางตามแนวตั้ง */
+  margin-bottom: 20px;
+}
+
+.search-container2 input[type=text] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  margin-right: 5px; /* เพิ่มระยะห่างของ input กับปุ่มค้นหา */
+}
+
+.search-container2 button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-container2 button:hover {
+  background-color: #45a049;
+}
+
+.search-container2 select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  margin-left: 5px; /* เพิ่มระยะห่างของปุ่มค้นหา กับ dropdown */
+}
+
+
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.custom-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.custom-button:hover {
+    background-color: #45a049;
+}
+
+.button-link {
+    text-decoration: none;
+    color: white;
+}
+
+
+/* Common styles */
+.column {
+        float: left;
+        width: 33.33%;
+        padding: 0 15px;
+        box-sizing: border-box;
+    }
+
+    /* Style for totalDebtorsInContract */
+    #totalDebtorsInContract {
+        font-size: 16px;
+        color: #000000;
+        margin-top: 5px;
+    }
+
+    /* Style for totalIDCard */
+    #totalIDCard {
+        font-size: 16px;
+        color: #000000;
+        margin-top: 5px;
+    }
+
+    /* Style for debtorsWithInterest */
+    #debtorsWithInterest {
+        font-size: 16px;
+        color: #000000;
+        margin-top: 5px;
+    }
+
+    /* Style for debtorsWithContracts */
+    #debtorsWithContracts {
+        font-size: 16px;
+        color: #000000;
+        margin-top: 5px;
+    }
+    #debtorsWhoExceededContracts {
+        font-size: 16px;
+        color: #000000;
+        margin-top: 5px;
+    }
+
+    /* Style for fullyPaidDebtors */
+    #fullyPaidDebtors {
+        font-size: 16px;
+        color: #000000;
+        margin-top: 5px;
+    }
+
+    /* Style for debtorsBlacklist */
+    #debtorsBlacklist {
+        font-size: 16px;
+        color: #000000;
+        margin-top: 5px;
+    }
+
+    /* Style for totalPrincipalAmount */
+    #totalPrincipalAmount {
+        font-size: 16px;
+        color: #000000;
+        margin-top: 5px;
+    }
+
+    /* Style for totalInterestAmount */
+    #totalInterestAmount {
+        font-size: 16px;
+        color: #000000;
+        margin-top: 5px;
+    }
+
+    /* Style for totalRefundAmount */
+    #totalRefundAmount {
+        font-size: 16px;
+        color: #000000;
+        margin-top: 5px;
+    }
+
+    /* Style for totalPrincipal */
+    #totalPrincipal {
+        font-size: 16px;
+        color: #000000;
+        margin-top: 5px;
+    }
+
+    /* Style for totalShare */
+    #totalAccumulatedInterest {
+        font-size: 16px;
+        color: #000000;
+        margin-top: 5px;
+    }
+
+    /* Style for totalNetProfit */
+    #totalNetProfit {
+        font-size: 16px;
+        color: #000000;
+        margin-top: 5px;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+
+
+.s {
+   color: green;
+}
+
+.b {
+    color: red;
+}
+.w {
+    color: rgb(26, 133, 233);
+}
+
+.l {
+    color: rgb(242, 160, 9);
+}
+.d{
+    color:rgb(248, 7, 204)
+}
+
+
+/* สไตล์สำหรับลิงก์ที่เป็น active */
+.navbar a.active2 {
+    background-color: #555; /* เปลี่ยนสีพื้นหลังของลิงก์ active */
+    color: white; /* เปลี่ยนสีข้อความของลิงก์ active */
+    position: relative; /* เพิ่มการจัดตำแหน่งเพื่อการแสดงจำนวน */
+    padding: 14px 20px; /* เพิ่ม padding เพื่อให้มีพื้นที่พอสมควร */
+    text-decoration: none; /* เอาเส้นขีดใต้ลิงก์ออก */
+}
+
+/* สไตล์สำหรับจำนวนในลิงก์ */
+.navbar a.active2::after {
+    content: attr(data-count);
+    display: inline-block;
+    background-color: red; /* เปลี่ยนสีพื้นหลังของวงกลม */
+    color: white; /* เปลี่ยนสีข้อความภายในวงกลม */
+    border-radius: 50%; /* ทำให้เป็นวงกลม */
+    width: 20px; /* ความกว้างของวงกลม */
+    height: 20px; /* ความสูงของวงกลม */
+    font-size: 0.9em; /* ขนาดตัวอักษร */
+    line-height: 20px; /* ทำให้ข้อความอยู่ตรงกลางแนวตั้ง */
+    text-align: center; /* จัดข้อความให้ตรงกลางแนวนอน */
+    margin-left: 8px; /* ระยะห่างระหว่างข้อความหลักและวงกลม */
+    position: absolute;
+    top: 22%;
+    right: -10px;
+    transform: translateY(-50%);
+}
+
+/* ซ่อนวงกลมถ้าจำนวนการแจ้งเตือนเป็น 0 */
+.navbar a.active2[data-count="0"]::after {
+    display: none;
+}
+
+
+
+</style>
+
+</head>
+<body>
+    <div class="navbar">
+        <a href="ข้อมูลลูกหนี้.html">ข้อมูลลูกหนี้</a>
+        <a href="รายงานผล.html">รายงานผล</a>
+        <a href="เช็คเครดิต.html">เช็คเครดิต</a>
+        <a href="คลังทรัพย์สิน.html">คลังทรัพย์สิน</a>
+        <a href="ไอคราว.html">ไอคราว</a>
+        <a href="เเอดมิน.html">เเอดมิน</a>
+        <a href="คนทวง.html">คนทวง</a>
+        <a href="กองทุน.html">กองทุน</a>
+        <a href="ประวัติการทำรายการ.html">ประวัติการทำรายการ</a>
+        <a class="active2" href="เเจ้งเตือน.html">เเจ้งเตือน</a>
+        <a href="ตั้งค่า.html">ตั้งค่า</a>
+    </div>
+
+
+<h2 style="text-align:center;">เเจ้งเตือนครบกำหนดชำระวันนี้</h2>
+
+
+
+
+
+
+
+
+<table id="loanTable">
+    <thead>
+      <tr>
+        <th>ลำดับ</th>
+        <th>วันที่กู้</th>
+        <th>เลขบัตรประชาชน</th>
+        <th>ชื่อ</th>
+        <th>นามสกุล</th>
+        <th>วันที่ต้องคืน</th>
+        <th>เงินต้น</th>
+        <th>ดอกเบี้ย</th>
+        <th>เงินที่ต้องคืน</th>
+        <th>เเอดมิน</th>
+      </tr>
+    </thead>
+    <tbody id="loanTableBody"></tbody>
+</table>
+
+<script src="เเจ้งเตือน.js"></script>
+
+
+
+</body>
+</html>
+
+
+

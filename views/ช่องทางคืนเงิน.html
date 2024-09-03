@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ช่องทางคืนเงิน</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow-x: auto;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+    align-items: center;
+    overflow-y: auto;
+    max-height: 90vh;
+    overflow-x: hidden;
+}
+
+.contract {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px; /* ขยายความกว้างสำหรับรายละเอียดมาก */
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+    transition: box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.contract:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.contract i {
+    font-size: 50px;
+    color: #41ae2e;
+    margin-bottom: 10px;
+}
+
+.contract h3 {
+    margin: 0;
+    color: #333;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.contract h4 {
+    margin: 10px 0;
+    color: #00796b;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.contract p {
+    margin: 5px 0;
+    color: #555;
+    font-size: 1rem;
+}
+
+/* Media Queries สำหรับหน้าจอขนาดเล็ก */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .contract {
+        width: 100%;
+        padding: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* ลดขนาดเงาสำหรับหน้าจอเล็ก */
+    }
+
+    .contract i {
+        font-size: 40px; /* ลดขนาดไอคอน */
+    }
+
+    .contract h3 {
+        font-size: 1.2rem; /* ลดขนาดตัวอักษร */
+    }
+
+    .contract h4 {
+        font-size: 1rem; /* ลดขนาดตัวอักษร */
+    }
+
+    .contract p {
+        font-size: 0.9rem; /* ลดขนาดตัวอักษร */
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="contract">
+            <i class="fas fa-university"></i>
+            <h3>วิธีการคืนเงินผ่านธนาคาร</h3>
+            <h4>ธนาคารกรุงเทพ</h4>
+            <p>เลขที่บัญชี: 123-456-7890</p>
+            <p>ชื่อบัญชี: บริษัท ABC จำกัด</p>
+        </div>
+        <div class="contract">
+            <i class="fas fa-mobile-alt"></i>
+            <h3>วิธีการคืนเงินผ่านพร้อมเพย์</h3>
+            <h4>พร้อมเพย์</h4>
+            <p>โอนเงินมายังหมายเลข: 081-234-5678</p>
+        </div>
+        <p style="color: red;">***ส่งสลิปพร้อมเลขบัตรประชาชนให้ทางร้าน***</p>
+
+    </div>
+</body>
+
+</html>

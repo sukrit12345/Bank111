@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<link rel="stylesheet" href="จำนวนเเจ้งเตือน.css">
+<script src="จำนวนเเจ้งเตือน.js"></script>
+<title>ตารางรายได้/ค่าใช้จ่าย/เงินทุน</title>
+
+<style>
+.navbar {
+        overflow: hidden;
+        background-color: #333;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        left: 0;
+        right: 0;
+    }
+.navbar a {
+        float: left;
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+    }
+.navbar a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+.navbar a.active {
+        background-color: #555;
+        color: white;
+    }
+    
+
+body {
+        font-family: Arial, sans-serif;
+        background-color: #ffffff;
+        margin-top: 100px;
+    }
+
+.container {
+  width: 60%;
+  margin: auto;
+  margin-top: 50px;
+}
+
+table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: auto;
+        margin-top: 80px;
+    }
+
+th, td {
+        border: 1px solid #dddddd;
+        text-align: center;
+        padding: 8px;
+    }
+
+th {
+        background-color: #333;
+        color: white;
+    }
+
+tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }    
+
+
+
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.column {
+
+    margin: 10px; /* Adjust the margin as needed */
+}
+
+.custom-button {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 150px; /* ปรับขนาดกว้างตามที่ต้องการ */
+    height: 40px; /* ปรับขนาดสูงตามที่ต้องการ */
+}
+.custom-button1 {
+    background-color: #555;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 150px; /* ปรับขนาดกว้างตามที่ต้องการ */
+    height: 40px; /* ปรับขนาดสูงตามที่ต้องการ */
+}
+
+
+
+.button-link {
+    text-decoration: none;
+    color: white;
+}
+
+.custom-button2 {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 150px; /* ปรับขนาดกว้างตามที่ต้องการ */
+    height: 40px; /* ปรับขนาดสูงตามที่ต้องการ */
+    
+}
+.custom-button3 {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 220px; /* ปรับขนาดกว้างตามที่ต้องการ */
+    height: 40px; /* ปรับขนาดสูงตามที่ต้องการ */
+    
+}
+
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.search-container input[type=text] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+
+.search-container button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-container button:hover {
+  background-color: #45a049;
+}
+
+.s {
+   color: green;
+}
+.b {
+    color: red;
+}
+.w {
+    color: rgb(26, 133, 233);
+}
+.l {
+    color: rgb(242, 160, 9);
+}
+.d{
+    color:rgb(248, 7, 204);
+}
+
+
+.daterangepicker {
+            transform: translateX(-30%);
+            font-size: 18px;
+        }
+        .daterangepicker .calendar-table {
+            font-size: 18px;
+        }
+        .daterangepicker .ranges li {
+            font-size: 18px;
+        }
+        .daterangepicker .drp-calendar {
+            width: 350px;
+        }
+        .daterangepicker .drp-calendar.left,
+        .daterangepicker .drp-calendar.right {
+            width: 350px;
+        }
+        .daterangepicker .drp-calendar .calendar-table table {
+            width: 100%;
+        }
+        .daterangepicker .drp-calendar .calendar-table table tbody tr td,
+        .daterangepicker .drp-calendar .calendar-table table thead tr th {
+            width: 14.28%;
+        }
+        .daterangepicker .drp-calendar.single .drp-calendar-table,
+        .daterangepicker .drp-calendar .drp-calendar-table,
+        .daterangepicker .drp-calendar {
+            max-width: 600px;
+        }
+        .chart-container {
+            max-width: 220px;
+            margin: 0 auto;
+        }
+.search-container2 {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* จัดให้อยู่ตรงกลางตามแนวตั้ง */
+  margin-bottom: 20px;
+}
+
+.search-container2 input[type=text] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  margin-right: 5px; /* เพิ่มระยะห่างของ input กับปุ่มค้นหา */
+}
+
+.search-container2 button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-container2 button:hover {
+  background-color: #45a049;
+}
+
+.search-container2 select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  margin-left: 5px; /* เพิ่มระยะห่างของปุ่มค้นหา กับ dropdown */
+}
+
+
+    #accountingTable td:nth-child(4), /* สำหรับ td */
+    #accountingTable th:nth-child(4)  /* สำหรับ th */
+    {
+        width: 1000px; /* กำหนดความกว้างของคอลัมน์ */
+        max-width: 1000px; /* กำหนดความกว้างสูงสุดของคอลัมน์ */
+        overflow: hidden; /* ซ่อนข้อความที่เกินความกว้างของคอลัมน์ */
+        text-overflow: ellipsis; /* แสดง "..." เมื่อตัดข้อความ */
+        white-space: nowrap; /* ป้องกันการแสดงข้อความในหลายบรรทัด */
+    }
+
+    /* ถ้าคุณต้องการให้ข้อความมีหลายบรรทัด แต่ไม่แสดง "..." */
+    #accountingTable td:nth-child(4) {
+        white-space: normal; /* ให้ข้อความแสดงในหลายบรรทัด */
+        overflow: hidden; /* ซ่อนข้อความที่เกิน */
+        text-overflow: ellipsis; /* ใช้ "..." เมื่อข้อความเกิน */
+    }
+</style>
+</head>
+
+
+<body>
+
+
+    <div class="navbar">
+        <a href="ข้อมูลลูกหนี้.html">ข้อมูลลูกหนี้</a>
+        <a class="active" href="รายงานผล.html">รายงานผล</a>
+        <a href="เช็คเครดิต.html">เช็คเครดิต</a>
+        <a href="คลังทรัพย์สิน.html">คลังทรัพย์สิน</a>
+        <a href="ไอคราว.html">ไอคราว</a>
+        <a href="เเอดมิน.html">เเอดมิน</a>
+        <a href="คนทวง.html">คนทวง</a>
+        <a href="กองทุน.html">กองทุน</a>
+        <a href="ประวัติการทำรายการ.html">ประวัติการทำรายการ</a>
+        <a href="เเจ้งเตือน.html">เเจ้งเตือน</a>
+        <a href="ตั้งค่า.html">ตั้งค่า</a>
+    </div>
+
+<h2 style="text-align:center;">ตารางรายได้/ค่าใช้จ่าย/เงินทุน</h2>
+
+
+
+<div class="search-container2">
+    <select id="statusFilter">
+      <option value="" selected>ทั้งหมด</option>
+      <option value="รายได้">รายได้</option>
+      <option value="ค่าใช้จ่าย">ค่าใช้จ่าย</option>
+      <option value="เงินทุน">เงินทุน</option>
+      
+    </select>
+    <button type="button" onclick="searchIdCard()">ค้นหาสถานะ</button>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<table id="accountingTable">
+    <thead>
+        <tr>
+            <th>ลำดับ</th>
+            <th>วันที่</th>
+            <th>ประเภท</th>
+            <th>รายละเอียด</th>
+            <th>จำนวนเงิน</th>
+            <th>จัดการ</th>
+        </tr>
+    </thead>
+    <tbody id="accountingTableBody">
+        <!-- ข้อมูลจะถูกแทรกที่นี่ผ่าน JavaScript -->
+    </tbody>
+</table>
+
+
+
+
+<script src="ตารางรายได้ค่าใช้จ่ายเงินทุน.js"></script>
+
+
+</body>
+</html>
+
+
+
+

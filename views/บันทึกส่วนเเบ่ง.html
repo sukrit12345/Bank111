@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="จำนวนเเจ้งเตือน.css">
+<script src="จำนวนเเจ้งเตือน.js"></script>
+<title>บันทึกคืนเงิน</title>
+
+<style>
+.navbar {
+        overflow: hidden;
+        background-color: #333;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        left: 0;
+        right: 0;
+    }
+.navbar a {
+        float: left;
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+    }
+.navbar a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+.navbar a.active {
+        background-color: #555;
+        color: white;
+    }
+    
+
+body {
+        font-family: Arial, sans-serif;
+        background-color: #ffffff;
+        margin-top: 100px;
+    }
+
+.container {
+  width: 60%;
+  margin: auto;
+  margin-top: 50px;
+}
+
+input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+
+  .form-container {
+    width: 50%;
+  }
+
+  form {
+    width: 100%;
+  }
+
+  label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  input[type="tel"],
+  input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+  }
+
+  input[type="submit"] {
+    background-color: #4caf50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  input[type="submit"] {
+    background-color: #4caf50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px; /* เพิ่มระยะห่างด้านบน */
+    margin-left: 90%; /* ย้ายปุ่มไปทางขวาสุดของ form-container */
+}
+
+.popup {
+      background-color: #4caf50; /* สีพื้นหลัง */
+      border-radius: 10px; /* รูปร่าง */
+      padding: 20px; /* ขอบเขตของเนื้อหา */
+      position: fixed; /* ตำแหน่งที่แน่นอน */
+      top: 50%; /* ตำแหน่งของป๊อปอัพด้านบน */
+      left: 50%; /* ตำแหน่งของป๊อปอัพด้านซ้าย */
+      transform: translate(-50%, -50%); /* การย้ายป๊อปอัพไปตรงกลางของหน้าจอ */
+      z-index: 1000; /* ลำดับการแสดงผล */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* เงา */
+    }
+  
+    /* สไตล์สำหรับข้อความในป๊อปอัพ */
+    .popup-text {
+      font-size: 18px; /* ขนาดตัวอักษร */
+      color: white; /* สีข้อความ */
+      text-align: center; /* การจัดข้อความให้อยู่ตรงกลาง */
+    }
+ 
+    .popup {
+      background-color: #4caf50; /* สีพื้นหลัง */
+      border-radius: 10px; /* รูปร่าง */
+      padding: 20px; /* ขอบเขตของเนื้อหา */
+      position: fixed; /* ตำแหน่งที่แน่นอน */
+      top: 50%; /* ตำแหน่งของป๊อปอัพด้านบน */
+      left: 50%; /* ตำแหน่งของป๊อปอัพด้านซ้าย */
+      transform: translate(-50%, -50%); /* การย้ายป๊อปอัพไปตรงกลางของหน้าจอ */
+      z-index: 1000; /* ลำดับการแสดงผล */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* เงา */
+    }
+  
+    /* สไตล์สำหรับข้อความในป๊อปอัพ */
+    .popup-text {
+      font-size: 18px; /* ขนาดตัวอักษร */
+      color: white; /* สีข้อความ */
+      text-align: center; /* การจัดข้อความให้อยู่ตรงกลาง */
+    }    
+
+</style>
+</head>
+<body>
+  <div class="navbar">
+    <a class="active" href="ข้อมูลลูกหนี้.html">ข้อมูลลูกหนี้</a>
+    <a href="รายงานผล.html">รายงานผล</a>
+    <a href="เช็คเครดิต.html">เช็คเครดิต</a>
+    <a href="คลังทรัพย์สิน.html">คลังทรัพย์สิน</a>
+    <a href="ไอคราว.html">ไอคราว</a>
+    <a href="เเอดมิน.html">เเอดมิน</a>
+    <a href="คนทวง.html">คนทวง</a>
+    <a href="กองทุน.html">กองทุน</a>
+    <a href="ประวัติการทำรายการ.html">ประวัติการทำรายการ</a>
+    <a href="เเจ้งเตือน.html">เเจ้งเตือน</a>
+    <a href="ตั้งค่า.html">ตั้งค่า</a>
+ </div> 
+
+<div class="container">
+
+
+
+
+  <form action="/profit-sharing" method="post" enctype="multipart/form-data" oninput="calculateShares()">
+    <fieldset>
+        <legend>ข้อมูลรหัสส่วนเเบ่ง</legend>
+        <br>
+        <label for="manager">เเอดมินดูเเล:</label>
+        <input type="text" id="manager" name="manager" placeholder="กรอกชื่อเเอดมิน" required readonly>
+
+        <label for="id_card_number">เลขบัตรประชาชน:</label>
+        <input type="text" id="id_card_number" name="id_card_number" placeholder="กรอกเลขบัตรประชาชน" required readonly>
+
+        <label for="fname">ชื่อจริง:</label>
+        <input type="text" id="fname" name="fname" placeholder="กรอกชื่อ" required readonly>
+
+        <label for="lname">นามสกุล:</label>
+        <input type="text" id="lname" name="lname" placeholder="กรอกนามสกุล" required readonly>
+
+        <label for="contract_number">หมายเลขสัญญา:</label>
+        <input type="text" id="contract_number" name="contract_number" placeholder="กรอกหมายเลขสัญญา" required readonly>
+
+        <label for="bill_number">หมายเลขบิล:</label>
+        <input type="text" id="bill_number" name="bill_number" placeholder="กรอกหมายเลขบิล" required readonly>
+    </fieldset>
+    <br>
+
+    <fieldset>
+        <legend>ข้อมูลการแบ่งเงินคนทวง</legend>
+        <br>
+        <label for="return_date_input">วันที่แบ่งเงิน (เดือน-วัน-ปี):</label>
+        <input type="date" id="return_date_input" name="return_date_input" placeholder="เลือกวันที่แบ่งเงิน" required><br><br>
+
+        <label for="initial_profit">เงินที่ต้องแบ่งคนทวง:</label>
+        <input type="number" id="initial_profit" name="initial_profit" placeholder="กรอกจำนวนเงินที่ต้องแบ่งคนทวง" required>
+
+        <label for="collector_name">ชื่อคนทวง:</label>
+        <input type="text" id="collector_name" name="collector_name" placeholder="กรอกชื่อคนทวง" required>
+
+        <label for="collector_share_percent">ส่วนแบ่งคนทวง (%):</label>
+        <input type="number" id="collector_share_percent" name="collector_share_percent" placeholder="กรอกจำนวนเงินส่วนแบ่งคนทวง(%)" required>
+
+        <label for="collector_share">ส่วนแบ่งคนทวง (บาท):</label>
+        <input type="number" id="collector_share" name="collector_share" placeholder="กรอกจำนวนเงินส่วนแบ่งคนทวง(บาท)" required>
+
+        <label for="collector_receipt_photo">รูปสลิปส่วนเเบ่งคนทวง:</label>
+        <input type="file" id="collector_receipt_photo" name="collector_receipt_photo">
+        <br>
+        <img  id="collector_receipt_photo_preview" alt="refund" style="display: none; max-width: 500px; max-height: 500px;">
+        <br>
+    </fieldset>
+    <br>
+
+    <fieldset>
+        <legend>ข้อมูลการแบ่งเงินเเอดมินดูเเล</legend>
+        <br>
+        <label for="initial_profit2">เงินที่ต้องแบ่งเเอดมินดูเเล:</label>
+        <input type="number" id="initial_profit2" name="initial_profit2" placeholder="กรอกจำนวนเงินที่ต้องแบ่งเเอดมินดูเเล" required>
+
+
+        <label for="manager_name">ชื่อเเอดมินดูแล:</label>
+        <input type="text" id="manager_name" name="manager_name" placeholder="กรอกชื่อเเอดมินดูแล" required readonly>
+
+        <label for="manager_share2">ส่วนแบ่งเเอดมินดูเเล (%):</label>
+        <input type="number" id="manager_share2" name="manager_share2" placeholder="กรอกจำนวนเงินส่วนแบ่งเเอดมินดูเเล(%)" required>
+
+        <label for="manager_share">ส่วนแบ่งเเอดมินดูเเล (บาท):</label>
+        <input type="number" id="manager_share" name="manager_share" placeholder="กรอกจำนวนเงินส่วนแบ่งเเอดมินดูเเล(บาท)" required>
+
+        <label for="manager_receipt_photo">รูปสลิปส่วนเเบ่งเเอดมินดูเเล:</label>
+        <input type="file" id="manager_receipt_photo" name="manager_receipt_photo">
+        <br>
+        <img  id="manager_receipt_photo_preview" alt="refund" style="display: none; max-width: 500px; max-height: 500px;">
+        <br>
+    </fieldset>
+    <br>
+
+    <fieldset>
+        <legend>ข้อมูลการแบ่งเงินเเอดมินรับเงิน</legend>
+        <br>
+        <label for="receiver_profit">เงินที่ต้องแบ่งเเอดมินรับเงิน:</label>
+        <input type="number" id="receiver_profit" name="receiver_profit" placeholder="กรอกจำนวนเงินที่ต้องแบ่งเเอดมินรับเงิน" required>
+
+
+        <label for="receiver_name">ชื่อเเอดมินรับเงิน:</label>
+        <select id="receiver_name" name="receiver_name" required>
+          <option value="">เลือกชื่อเอดมิน</option>
+        </select>
+        <br><br>
+
+        <label for="receiver_share_percent">ส่วนแบ่งเเอดมินรับเงิน (%):</label>
+        <input type="number" id="receiver_share_percent" name="receiver_share_percent" placeholder="กรอกจำนวนเงินส่วนแบ่งเเอดมินรับเงิน(%)" required>
+
+        <label for="receiver_share">ส่วนแบ่งเเอดมินรับเงิน (บาท):</label>
+        <input type="number" id="receiver_share" name="receiver_share" placeholder="กรอกจำนวนเงินส่วนแบ่งเเอดมินรับเงิน(บาท)" required>
+
+        <label for="receiver_receipt_photo">รูปสลิปส่วนเเบ่งเเอดมินรับเงิน:</label>
+        <input type="file" id="receiver_receipt_photo" name="receiver_receipt_photo">
+        <br>
+        <img  id="receiver_receipt_photo_preview" alt="refund" style="display: none; max-width: 500px; max-height: 500px;">
+        <br>
+    </fieldset>
+    <br>
+
+    <fieldset>
+        <legend>ข้อมูลกำไรสุทธิ</legend>
+        <br>
+        <label for="total_share">ส่วนเเบ่งทั้งหมด (บาท):</label>
+        <input type="number" id="total_share" name="total_share" placeholder="กรอกจำนวนเงินส่วนเเบ่งทั้งหมด" required readonly>
+
+        <label for="net_profit">กำไรสุทธิ (บาท):</label>
+        <input type="number" id="net_profit" name="net_profit" placeholder="กรอกจำนวนกำไรสุทธิ" required readonly>
+    </fieldset>
+    <br>
+    <input type="hidden" id="creditorId" name="creditorId">
+    <input type="hidden" id="refundId" name="refundId">
+    <input type="submit" value="บันทึกส่วนเเบ่ง" class="button">
+</form>
+
+    
+</div>
+
+
+<script src="บันทึกส่วนเเบ่ง.js"></script>
+
+
+
+
+
+
+
+</body>
+</html>

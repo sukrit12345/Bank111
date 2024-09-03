@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="จำนวนเเจ้งเตือน.css">
+<script src="จำนวนเเจ้งเตือน.js"></script>
+<title>บันทึกสัญญา</title>
+
+<style>
+.navbar {
+        overflow: hidden;
+        background-color: #333;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        left: 0;
+        right: 0;
+    }
+.navbar a {
+        float: left;
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+    }
+.navbar a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+.navbar a.active {
+        background-color: #555;
+        color: white;
+    }
+    
+
+body {
+        font-family: Arial, sans-serif;
+        background-color: #ffffff;
+        margin-top: 100px;
+    }
+
+.container {
+  width: 60%;
+  margin: auto;
+  margin-top: 50px;
+}
+
+input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+
+  .form-container {
+    width: 50%;
+  }
+
+  form {
+    width: 100%;
+  }
+
+  label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  input[type="tel"],
+  input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+  }
+
+  input[type="submit"] {
+    background-color: #4caf50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  input[type="submit"] {
+    background-color: #4caf50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px; /* เพิ่มระยะห่างด้านบน */
+    margin-left: 90%; /* ย้ายปุ่มไปทางขวาสุดของ form-container */
+}
+
+.popup {
+      background-color: #4caf50; /* สีพื้นหลัง */
+      border-radius: 10px; /* รูปร่าง */
+      padding: 20px; /* ขอบเขตของเนื้อหา */
+      position: fixed; /* ตำแหน่งที่แน่นอน */
+      top: 50%; /* ตำแหน่งของป๊อปอัพด้านบน */
+      left: 50%; /* ตำแหน่งของป๊อปอัพด้านซ้าย */
+      transform: translate(-50%, -50%); /* การย้ายป๊อปอัพไปตรงกลางของหน้าจอ */
+      z-index: 1000; /* ลำดับการแสดงผล */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* เงา */
+    }
+  
+    /* สไตล์สำหรับข้อความในป๊อปอัพ */
+    .popup-text {
+      font-size: 18px; /* ขนาดตัวอักษร */
+      color: white; /* สีข้อความ */
+      text-align: center; /* การจัดข้อความให้อยู่ตรงกลาง */
+    }
+  
+  
+
+</style>
+</head>
+<body>
+  <div class="navbar">
+    <a class="active" href="ข้อมูลลูกหนี้.html">ข้อมูลลูกหนี้</a>
+    <a href="รายงานผล.html">รายงานผล</a>
+    <a href="เช็คเครดิต.html">เช็คเครดิต</a>
+    <a href="คลังทรัพย์สิน.html">คลังทรัพย์สิน</a>
+    <a href="ไอคราว.html">ไอคราว</a>
+    <a href="เเอดมิน.html">เเอดมิน</a>
+    <a href="คนทวง.html">คนทวง</a>
+    <a href="กองทุน.html">กองทุน</a>
+    <a href="ประวัติการทำรายการ.html">ประวัติการทำรายการ</a>
+    <a href="เเจ้งเตือน.html">เเจ้งเตือน</a>
+    <a href="ตั้งค่า.html">ตั้งค่า</a>
+ </div> 
+
+
+
+<div class="container">
+
+
+  
+  <form action="/AddLoanInformation/submit" method="post" enctype="multipart/form-data">
+    <fieldset>
+      <legend>ข้อมูลรหัสสัญญา</legend>
+      <br> 
+      <label for="manager">แอดมินดูแล:</label>
+      <input type="text" id="manager" name="manager" placeholder="กรอกชื่อแอดมินดูเเล" required readonly>
+  
+      <label for="id_card_number">เลขบัตรประชาชน:</label>
+      <input type="text" id="id_card_number" name="id_card_number" placeholder="กรอกเลขบัตรประชาชน" required readonly>
+  
+      <label for="fname">ชื่อจริง:</label>
+      <input type="text" id="fname" name="fname" placeholder="กรอกชื่อ" required readonly>
+  
+      <label for="lname">นามสกุล:</label>
+      <input type="text" id="lname" name="lname" placeholder="กรอกนามสกุล" required readonly>
+  
+      <label for="contract_number">หมายเลขสัญญา:</label>
+      <input type="text" id="contract_number" name="contract_number" placeholder="กรอกหมายเลขสัญญา" required readonly>
+  
+      <label for="bill_number">หมายเลขบิล:</label>
+      <input type="text" id="bill_number" name="bill_number" placeholder="กรอกหมายเลขบิล" required readonly>
+    </fieldset> 
+    <br>
+    
+    <fieldset>
+      <legend>ข้อมูลประเภทการกู้</legend>
+      <br>
+    
+      <label for="loanType">ประเภทการกู้:</label>
+      <select id="loanType" name="loanType" required onchange="toggleFields()">
+        <option value="">เลือกประเภทการกู้</option>
+        <option value="loanCash">ใส่ไอคราวร้าน</option>
+        <option value="loanProperty">วางทรัพย์สิน</option>
+        <option value="loanSecurities">ไม่มีหลักทรัพย์</option>
+      </select>
+      <br><br>
+    
+      <div id="icloudAssetsFields" style="display:none;">
+
+
+        <label for="phoneicloud">เบอร์โทรศัพร้าน:</label>
+        <select id="phoneicloud" name="phoneicloud" required>
+            <option value="">เลือกเบอร์โทรศัพร้าน</option>
+        </select>
+        <br><br>
+
+        <label for="email_icloud">ยูสไอคราวร้าน:</label>
+        <select id="email_icloud" name="email_icloud" required>
+            <option value="">เลือกยูสไอคราวร้าน</option>
+        </select>
+        <br><br>
+        
+    
+        <label for="code_icloud2">รหัสไอคราวร้านที่ต้องส่งให้ลูกหนี้:</label>
+        <input type="text" id="code_icloud2" name="code_icloud2" placeholder="กรอกรหัสไอคราวร้านที่ต้องส่งให้ลูกหนี้" readonly >
+    
+        <label for="code_icloud">รหัสไอคราวร้านที่พึ่งเปลี่ยนล่าสุด:</label>
+        <input type="text" id="code_icloud" name="code_icloud" placeholder="กรอกรหัสไอคราวร้านที่พึ่งเปลี่ยนล่าสุด" >
+
+        <label for="icloud_assets">ทรัพย์สินที่ใส่ไอคราวร้าน (ทรัพย์ที่เป็นชื่อตัวเอง อธิบายให้ละเอียด):</label>
+        <input type="text" id="icloud_assets" name="icloud_assets" placeholder="กรอกทรัพย์สินที่ใส่ไอคราวร้าน">
+
+    
+        <label for="icloud_asset_photo">รูปที่ใส่ไอคราวร้าน (แคปหน้าตั้งค่า):</label>
+        <input type="file" id="icloud_asset_photo" name="icloud_asset_photo" accept="image/*">
+        <br>
+        <img id="icloud_asset_photo_preview" src="" alt="Image Preview" style="display: none; max-width: 500px; max-height: 500px;">
+        <br>
+        
+      </div>
+    
+      <div id="storeAssetsFields" style="display:none;">
+    
+        <label for="store_assets">ทรัพย์สินที่วางไว้ที่ร้าน (ทรัพย์ที่เป็นชื่อตัวเอง อธิบายให้ละเอียด):</label>
+        <input type="text" id="store_assets" name="store_assets" placeholder="กรอกทรัพย์สินที่วางไว้ที่ร้าน">
+    
+        <label for="asset_receipt_photo">รูปทรัพย์สินที่วางไว้ที่ร้าน:</label>
+        <input type="file" id="asset_receipt_photo" name="asset_receipt_photo" multiple accept="image/*">
+        <br>
+        <img id="asset_receipt_photo_preview" src="" alt="Image Preview" style="display: none; max-width: 500px; max-height: 500px;">
+        <br>
+
+      </div>
+    </fieldset>
+    <br>
+  
+    <fieldset>
+      <legend>ข้อมูลสัญญา</legend>
+      <br> 
+      <label for="loanDate">วันที่กู้ (เดือน-วัน-ปี):</label>
+      <input type="date" id="loanDate" name="loanDate" placeholder="เลือกวันที่กู้" required>
+      <br><br>
+  
+      <label for="loanPeriod">ระยะเวลากู้ (วัน):</label>
+      <input type="number" id="loanPeriod" name="loanPeriod" placeholder="กรอกจำนวนวันที่กู้" required>
+      
+      <label for="returnDate">วันที่ต้องคืน (เดือน-วัน-ปี):</label>
+      <input type="date" id="returnDate" name="returnDate" placeholder="เลือกวันที่คืน" required>
+      <br><br>
+      
+      <label for="principal">เงินต้น:</label>
+      <input type="number" id="principal" name="principal" placeholder="กรอกจำนวนเงินต้น" required>
+  
+      <label for="interestRate">อัตราดอกเบี้ยต่อวัน (%):</label>
+      <input type="number" id="interestRate" name="interestRate" placeholder="กรอกอัตราดอกเบี้ยต่อวัน (%)" required>
+    
+      <label for="totalInterest">ดอกเบี้ยทั้งหมด (บาท):</label>
+      <input type="number" id="totalInterest" name="totalInterest" placeholder="กรอกจำนวนดอกเบี้ยทั้งหมด" required>
+   
+      <label for="totalRefund">รวมเงินที่ต้องคืน:</label>
+      <input type="number" id="totalRefund" name="totalRefund" placeholder="กรอกจำนวนเงินที่ต้องคืนทั้งหมด" required>
+  
+      <label for="refund_receipt_photo">รูปสลิปเงินต้น:</label>
+      <input type="file" id="refund_receipt_photo" name="refund_receipt_photo" accept="image/*">
+      <br>
+      <img id="refund_receipt_photo_preview" src="" alt="Image Preview" style="display: none; max-width: 500px; max-height: 500px;">
+      <br>
+  
+      <label for="contract">ใบสัญญา:</label>
+      <input type="file" id="contract" name="contract" accept="image/*">
+      <br>
+      <img  id="contract_preview" alt="Contract" style="display: none; max-width: 500px; max-height: 500px;">
+      <br>
+
+    </fieldset> 
+    <br> 
+  
+    <fieldset>
+      <legend>ข้อมูลคนแนะนำ</legend>
+      <br> 
+      <label for="manager2">คนแนะนำ:</label>
+      <input type="text" id="manager2" name="manager2" placeholder="กรอกชื่อคนแนะนำ" required> 
+  
+      <label for="Recommended">ค่าแนะนำ:</label>
+      <input type="number" id="Recommended" name="Recommended" placeholder="กรอกค่าแนะนำ" required>
+  
+      <label for="Recommended_photo">รูปสลิปค่าแนะนำ:</label>
+      <input type="file" id="Recommended_photo" name="Recommended_photo" accept="image/*">
+      <br>
+      <img id="Recommended_photo_preview" src="" alt="Image Preview" style="display: none; max-width: 500px; max-height: 500px;">
+      <br>
+
+    </fieldset> 
+    <br> 
+  
+    
+    <input type="hidden" id="icloud_records" name="icloud_records">
+    <input type="hidden" id="creditorId" name="creditorId">
+  
+    <input id="updateButton" type="submit" value="บันทึกสัญญา" class="button">
+  </form>
+  
+    
+
+</div>
+
+
+
+
+<script src="บันทึกสัญญา.js"></script>
+
+
+
+
+
+</body>
+</html>

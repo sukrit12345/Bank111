@@ -1,0 +1,31 @@
+/* สไตล์สำหรับลิงก์ที่เป็น active */
+.navbar a.active2 {
+    color: white; /* เปลี่ยนสีข้อความของลิงก์ active */
+    position: relative; /* เพิ่มการจัดตำแหน่งเพื่อการแสดงจำนวน */
+    padding: 14px 20px; /* เพิ่ม padding เพื่อให้มีพื้นที่พอสมควร */
+    text-decoration: none; /* เอาเส้นขีดใต้ลิงก์ออก */
+}
+
+/* สไตล์สำหรับจำนวนในลิงก์ */
+.navbar a.active2::after {
+    content: attr(data-count);
+    display: inline-block;
+    background-color: red; /* เปลี่ยนสีพื้นหลังของวงกลม */
+    color: white; /* เปลี่ยนสีข้อความภายในวงกลม */
+    border-radius: 50%; /* ทำให้เป็นวงกลม */
+    width: 20px; /* ความกว้างของวงกลม */
+    height: 20px; /* ความสูงของวงกลม */
+    font-size: 0.9em; /* ขนาดตัวอักษร */
+    line-height: 20px; /* ทำให้ข้อความอยู่ตรงกลางแนวตั้ง */
+    text-align: center; /* จัดข้อความให้ตรงกลางแนวนอน */
+    margin-left: 8px; /* ระยะห่างระหว่างข้อความหลักและวงกลม */
+    position: absolute;
+    top: 22%;
+    right: -10px;
+    transform: translateY(-50%);
+}
+
+/* ซ่อนวงกลมเมื่อจำนวนเป็น 0 */
+.navbar a.active2[data-count="0"]::after {
+    display: none; /* ซ่อนวงกลมเมื่อจำนวนเป็น 0 */
+}
